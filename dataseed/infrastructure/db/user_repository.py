@@ -159,4 +159,10 @@ class UserRepository(UserRepositoryInterface):
         user = await self.session.scalar(
             select(UserModel).where(UserModel.id == user_id)
         )
+
+        if user is None:
+            raise HTTPException(
+                status_code=HTTPStatus.NOT_FOUND,
+                detail='User not found',
+            )
         return user

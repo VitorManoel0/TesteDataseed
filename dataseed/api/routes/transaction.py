@@ -19,7 +19,7 @@ router = APIRouter(prefix='/transaction', tags=['Transaction'])
 T_Session = Annotated[AsyncSession, Depends(get_session)]
 
 
-@router.post('/L1-simple_authorizer', response_model=TransactionResponseSchema)
+@router.post('/authorizer', response_model=TransactionResponseSchema)
 async def update_user(session: T_Session, transaction: TransactionSchema):
     user_repository = UserRepository(session)
     transaction_use_case = TransactionUseCase(user_repository=user_repository)
