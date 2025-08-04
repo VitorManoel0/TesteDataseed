@@ -3,7 +3,7 @@
 <!-- HEADER STYLE: CLASSIC -->
 <div align="center">
 
-# TESTEDATASEED
+# TESTEDATASEED - Vitor Manoel
 
 <em></em>
 
@@ -486,9 +486,20 @@ Build TesteDataseed from the source and install dependencies:
 Run the project with:
 
 **Using [docker](https://www.docker.com/):**
-```sh
-  docker compose build up -d
-```
+
+    docker compose build up -d
+
+
+### Explain
+
+
+- In the project have a URL to create, get_all, edit and delete account and any (delete and put) url's using JWT TOKEN.
+- Have a URL to management users, and add cash, food and meal.
+- And tho resolve the challenge use a URL transaction/authorizer.
+
+**L4 - Response:**
+- Para lidar com a questão apresentada eu usaria um auto load balancer como um Elastic Load Balancing por exemplo e para sempre manter a disponibilidade eu usaria um sistema de PUB/SUB da própria AWS, com isso eu garantiria o tempo de resposta <100ms e como o sistema foi pensado em um contexto async ja ajudaria na questão da concorrência
+
 
 ### Testing
 
@@ -504,7 +515,6 @@ poetry run pytest
 The project currently has 93% coverage
 
 [![Coverage](https://img.shields.io/badge/coverage-93%25-brightgreen.svg)](coverage.png)
-
 ![Texto Alternativo](coverage.png)
 
 
