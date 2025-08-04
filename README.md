@@ -3,8 +3,6 @@
 <!-- HEADER STYLE: CLASSIC -->
 <div align="center">
 
-<img src="readmeai/assets/logos/purple.svg" width="30%" style="position: relative; top: 0; right: 0;" alt="Project Logo"/>
-
 # TESTEDATASEED
 
 <em></em>
@@ -23,6 +21,7 @@
 <img src="https://img.shields.io/badge/Python-3776AB.svg?style=default&logo=Python&logoColor=white" alt="Python">
 <img src="https://img.shields.io/badge/Poetry-60A5FA.svg?style=default&logo=Poetry&logoColor=white" alt="Poetry">
 <img src="https://img.shields.io/badge/Pydantic-E92063.svg?style=default&logo=Pydantic&logoColor=white" alt="Pydantic">
+<img src="https://img.shields.io/badge/Docker-2496ED.svg?style=default&logo=Docker&logoColor=white" alt="Docker">
 <!-- default option, no dependency badges. -->
 
 
@@ -545,6 +544,8 @@ This project requires the following dependencies:
 
 - **Programming Language:** Python
 - **Package Manager:** Poetry
+- **Container Platform:** Docker
+- **Web Framework**: FastAPI
 
 ### Installation
 
@@ -562,21 +563,25 @@ Build TesteDataseed from the source and install dependencies:
     ❯ cd TesteDataseed
     ```
 
-3. **Install the dependencies:**
-
-	**Using [poetry](https://python-poetry.org/):
-
+3. **Create a .env**
+    **in windows**
     ```sh
-	❯ poetry install
-	```
+    # In windows system
+    copy .env.sample .env
+    
+    # In linux system
+    cp .env.sample .env
+    ```
+
+
 
 ### Usage
 
 Run the project with:
 
-**Using [poetry](https://python-poetry.org/):**
+**Using [docker](https://www.docker.com/):**
 ```sh
-poetry run python {entrypoint}
+  docker-compose build -d
 ```
 
 ### Testing
