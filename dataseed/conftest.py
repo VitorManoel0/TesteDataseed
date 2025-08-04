@@ -110,3 +110,52 @@ def invalid_token():
 def no_valid_field_token():
     data = {'iss': 'invalid_username@email.com'}
     return security.create_access_token(data)
+
+
+@pytest.fixture
+def user_data():
+    return {
+        'username': 'teste',
+        'email': 'testuser@example.com',
+        'password': 'testpassword123',
+    }
+
+
+@pytest.fixture
+def transaction_data(user):
+    return {
+        'account': str(user.id),
+        'amount': 10.50,
+        'mcc': '5411',
+        'merchant': 'PADARIA DO ZE               SAO PAULO BR',
+    }
+
+
+@pytest.fixture
+def insufficient_balance_transaction(user):
+    return {
+        'account': str(user.id),
+        'amount': 1000.00,
+        'mcc': '5411',
+        'merchant': 'LOJA CARA                  SAO PAULO BR',
+    }
+
+
+@pytest.fixture
+def invalid_merchant_transaction(user):
+    return {
+        'account': str(user.id),
+        'amount': 10.00,
+        'mcc': '5411',
+        'merchant': 'MERCHANT_INVALIDO',
+    }
+
+
+@pytest.fixture
+def nonexistent_user_transaction():
+    return {
+        'account': '99999',
+        'amount': 10.00,
+        'mcc': '5411',
+        'merchant': 'MERCHANT TEST               SAO PAULO BR',
+    }
