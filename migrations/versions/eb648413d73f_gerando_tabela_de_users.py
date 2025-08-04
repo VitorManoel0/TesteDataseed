@@ -28,6 +28,9 @@ def upgrade() -> None:
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
     sa.Column('updated_at', sa.DateTime(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
+    sa.Column('food_amount', sa.Numeric(precision=10, scale=2), server_default=sa.text('(0.00)'), nullable=False),
+    sa.Column('meal_amount', sa.Numeric(precision=10, scale=2), server_default=sa.text('(0.00)'), nullable=False),
+    sa.Column('cash', sa.Numeric(precision=10, scale=2), server_default=sa.text('(0.00)'), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
