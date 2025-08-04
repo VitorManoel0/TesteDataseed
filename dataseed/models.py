@@ -9,9 +9,6 @@ from zoneinfo import ZoneInfo
 table_registry = registry()
 
 
-# Todo: o enum vai ficar aqui
-
-
 class BaseModel:
     id: Mapped[int] = mapped_column(init=False, primary_key=True)
     created_at: Mapped[datetime] = mapped_column(
@@ -53,26 +50,3 @@ class Transaction(BaseModel):
     amount: Mapped[PyDecimal] = mapped_column(
         Numeric(10, 2), default=PyDecimal('0.00'), server_default=text('0.00')
     )
-
-
-# @table_registry.mapped_as_dataclass
-# class Author(BaseModel):
-#     __tablename__ = 'authors'
-#
-#     name: Mapped[str] = mapped_column(unique=True)
-#
-#     books: Mapped[list['Book']] = relationship(
-#         init=False, back_populates='author'
-#     )
-#
-#
-# @table_registry.mapped_as_dataclass
-# class Book(BaseModel):
-#     __tablename__ = 'books'
-#
-#     year: Mapped[int]
-#     title: Mapped[str] = mapped_column(unique=True)
-#
-#     author_id: Mapped[int] = mapped_column(ForeignKey('authors.id'))
-#
-#     author: Mapped[Author] = relationship(init=False, back_populates='books')
