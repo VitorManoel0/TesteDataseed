@@ -134,6 +134,4 @@ def test_process_transaction_with_invalid_account_format_should_return_error(
         '/transaction/authorizer', json=invalid_account_transaction
     )
 
-    assert response.status_code == HTTPStatus.OK
-    data = response.json()
-    assert data['code'] == '07'
+    assert response.status_code == HTTPStatus.UNPROCESSABLE_ENTITY

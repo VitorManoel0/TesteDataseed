@@ -1,6 +1,7 @@
 from unittest.mock import AsyncMock, MagicMock
 
 import pytest
+from pydantic import ValidationError
 
 from dataseed.api.schemas.transaction import TransactionSchema
 from dataseed.application.interfaces.user_repository_interface import (
@@ -264,10 +265,12 @@ async def test_meal_mcc_5812(user_repository, user_mock, transaction_use_case):
 
 @pytest.mark.asyncio
 async def test_invalid_account_id(user_repository, transaction_use_case):
-    transaction = TransactionSchema(
-        account='invalid', amount=25.0, mcc='5411', merchant='SUPERMERCADO ABC'
-    )
+    with pytest.raises(ValidationError) as exc_info:
+        TransactionSchema(
+            account='invalid',
+            amount=25.0,
+            mcc='5411',
+            merchant='SUPERMERCADO ABC',
+        )
 
-    result = await transaction_use_case.process_transaction(transaction)
-
-    assert result.code == '07'
+    assert 'field is not a digit' in str(exc_info.value)
